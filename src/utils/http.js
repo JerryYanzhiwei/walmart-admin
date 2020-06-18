@@ -4,7 +4,7 @@ import {
   Message
 } from 'element-ui'
 
-const origin = location.hostname === 'localhost' ? 'https://sf.shangzhaopin.com' : location.origin
+const origin = location.hostname === 'localhost' ? 'http://122.152.200.11:8080' : location.origin
 export const BASE_URL = origin + '/match-service'
 axios.defaults.baseURL = BASE_URL
 
