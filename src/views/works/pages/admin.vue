@@ -15,10 +15,10 @@
     <el-table
       :data="tableData"
       stripe>
-      <el-table-column
+      <!-- <el-table-column
         prop="teamNo"
         label="#">
-      </el-table-column>
+      </el-table-column> -->
       <el-table-column
         label="队伍名称">
         <template slot-scope="scope">
@@ -38,11 +38,11 @@
           </el-tooltip>
         </template>
       </el-table-column>
-      <el-table-column
+      <!-- <el-table-column
         prop="directionName"
         label="方向">
-      </el-table-column>
-      <el-table-column
+      </el-table-column> -->
+      <!-- <el-table-column
         label="课题">
         <template slot-scope="scope">
           <el-popover width="200" trigger="hover" :content="scope.row.subjectName" placement="top">
@@ -52,7 +52,7 @@
             </div>
           </el-popover>
         </template>
-      </el-table-column>
+      </el-table-column> -->
       <el-table-column
         label="赛区">
         <template slot-scope="scope">
@@ -72,12 +72,12 @@
           </div>
         </template>
       </el-table-column>
-      <el-table-column
+      <!-- <el-table-column
         label="得分">
         <template slot-scope="scope">
           <span>{{scope.row.totalScore || '---'}}</span>
         </template>
-      </el-table-column>
+      </el-table-column> -->
       <el-table-column
         prop=""
         label="评审情况">
