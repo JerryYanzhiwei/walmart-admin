@@ -1,7 +1,7 @@
 <template>
   <div class="works_list_container">
     <!-- <div class="page_title">评委审核功能</div> -->
-    <div v-if="userInfo.superAdmin === 1" class="down_list">
+    <div class="down_list">
       <el-button @click="downloadAccount" type="primary">下载注册列表<i class="el-icon-download el-icon--right"></i></el-button>
       <el-button @click="downloadTeamList" type="primary">下载队伍列表<i class="el-icon-download el-icon--right"></i></el-button>
     </div>
