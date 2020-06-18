@@ -55,8 +55,8 @@
       </el-table-column> -->
       <el-table-column
         label="赛区">
-        <template slot-scope="scope">
-          <span>{{getZone(scope.row.matchZone)}}</span>
+        <template>
+          <!-- <span>{{getZone(scope.row.matchZone)}}</span> -->
         </template>
       </el-table-column>
       <el-table-column
