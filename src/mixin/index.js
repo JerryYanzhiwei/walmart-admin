@@ -12,8 +12,7 @@ export default {
       return reg.test(str)
     },
     getZone (code) {
-      code = Number(code)
-      const arr = jsonData.filter((val) => code === val.code)
+      const arr = jsonData.filter((val) => code === val.value)
       return arr[0].matchZone
     },
     // 获取信息

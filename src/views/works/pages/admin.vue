@@ -22,20 +22,21 @@
       <el-table-column
         label="队伍名称">
         <template slot-scope="scope">
-          <el-popover width="200" trigger="hover" :content="scope.row.teamName" placement="top">
-            <div>{{scope.row.teamName}}</div>
-            <div slot="reference" class="name-wrapper">
-              <div class="nowrap">{{ scope.row.teamName }}</div>
-            </div>
-          </el-popover>
+          <el-tooltip :content="scope.row.teamName" placement="top-start">
+            <span>{{scope.row.teamName}}</span>
+          </el-tooltip>
         </template>
       </el-table-column>
       <el-table-column
         label="作品名称">
         <template slot-scope="scope">
-          <el-tooltip :content="scope.row.opusName" placement="top">
-            <span style="color: #33394E">{{scope.row.opusName}}</span>
-          </el-tooltip>
+          <div>
+            <p v-for="(item, index) in scope.row.attachments" :key="index">
+              <el-tooltip v-if="item.attachmentType === 2" :content="item.attachmentFileName" placement="top-start">
+                <span @click="getFileDown(item.attachmentId)">{{item.attachmentFileName}}</span>
+              </el-tooltip>
+            </p>
+          </div>
         </template>
       </el-table-column>
       <!-- <el-table-column
@@ -45,7 +46,7 @@
       <!-- <el-table-column
         label="课题">
         <template slot-scope="scope">
-          <el-popover width="200" trigger="hover" :content="scope.row.subjectName" placement="top">
+          <el-popover width="200" trigger="hover" :content="scope.row.subjectName" placement="top-start">
             <div>{{scope.row.subjectName}}</div>
             <div slot="reference" class="name-wrapper">
               <div class="nowrap">{{ scope.row.subjectName }}</div>
@@ -55,8 +56,8 @@
       </el-table-column> -->
       <el-table-column
         label="赛区">
-        <template>
-          <!-- <span>{{getZone(scope.row.matchZone)}}</span> -->
+        <template slot-scope="scope">
+          <span>{{getZone(scope.row.province)}}</span>
         </template>
       </el-table-column>
       <el-table-column
@@ -65,7 +66,7 @@
         <template slot-scope="scope">
           <div>
             <p v-for="(item, index) in scope.row.attachments" :key="index">
-              <el-tooltip :content="item.attachmentFileName" placement="top">
+              <el-tooltip v-if="item.attachmentType === 2" :content="item.attachmentFileName" placement="top-start">
                 <span @click="getFileDown(item.attachmentId)">{{item.attachmentFileName}}</span>
               </el-tooltip>
             </p>
@@ -122,7 +123,7 @@ export default {
     this.getData()
   },
   methods: {
-    ...mapActions(['GET_TEAM_LIST', 'GET_ACCOUNT_LIST', 'GET_DOWN_FILE']),
+    ...mapActions(['GET_TEAM_LIST', 'GET_ACCOUNT_LIST', 'GET_DOWN_FILE', 'PUT_TEAM_PROGRESS']),
     async getFileDown (attachmentId) {
       await this.GET_DOWN_FILE(attachmentId)
     },
@@ -156,8 +157,12 @@ export default {
       })
     },
     // 通过
-    pass (row) {
-      console.log('通过:', row)
+    async pass (row) {
+      const res = await this.PUT_TEAM_PROGRESS(row)
+      if (res.result === '0' && res.data) {
+        this.getData()
+      }
+      console.log('通过:', row, res)
     },
     // 获取页面数据
     async getData () {

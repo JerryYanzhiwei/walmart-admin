@@ -1,6 +1,6 @@
 <template>
   <div class="main_header_container">
-    <div class="left_txt">“顺丰杯”物流创新设计大赛</div>
+    <div class="left_txt">沃尔玛大赛</div>
     <div class="right">
       <span>{{adminInfo.username}}</span>
       <span class="line">|</span>

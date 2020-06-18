@@ -52,6 +52,12 @@ export default new Vuex.Store({
     async GET_DOWN_FILE ({ commit }, attachmentId = 0) {
       const url = '/admin/team/dowload/attachment'
       window.open(`${BASE_URL}${url}?attachmentId=${attachmentId}`)
+    },
+    // 更改队伍流程
+    async PUT_TEAM_PROGRESS ({ commit }, data = {}) {
+      data.progress = ++data.progress
+      const { data: res } = await axios.put(`/admin/team/teamProgress?teamId=${data.teamId}&teamProgress=${data.progress}`)
+      return res
     }
   },
   modules: {
