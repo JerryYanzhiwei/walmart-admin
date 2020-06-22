@@ -7,9 +7,10 @@
     </div>
     <div class="filter_container">
       <el-tabs v-model="activeType" @tab-click="handleClick">
-        <el-tab-pane label="初筛" name="0"></el-tab-pane>
-        <el-tab-pane label="半决赛" name="1"></el-tab-pane>
-        <el-tab-pane label="决赛" name="2"></el-tab-pane>
+        <el-tab-pane label="组队中" name="0"></el-tab-pane>
+        <el-tab-pane label="初选" name="1"></el-tab-pane>
+        <el-tab-pane label="半决赛" name="2"></el-tab-pane>
+        <el-tab-pane label="决赛" name="3"></el-tab-pane>
       </el-tabs>
     </div>
     <el-table
