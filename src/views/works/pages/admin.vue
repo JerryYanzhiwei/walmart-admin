@@ -8,9 +8,9 @@
     <div class="filter_container">
       <el-tabs v-model="activeType" @tab-click="handleClick">
         <el-tab-pane label="组队中" name="0"></el-tab-pane>
-        <el-tab-pane label="初选" name="1"></el-tab-pane>
-        <el-tab-pane label="半决赛" name="2"></el-tab-pane>
-        <el-tab-pane label="决赛" name="3"></el-tab-pane>
+        <el-tab-pane label="初赛" name="1"></el-tab-pane>
+        <el-tab-pane label="区域复赛" name="2"></el-tab-pane>
+        <el-tab-pane label="全国决赛" name="3"></el-tab-pane>
       </el-tabs>
     </div>
     <el-table
@@ -84,7 +84,7 @@
         prop=""
         label="评审情况">
         <template slot-scope="scope">
-          <PublicButton @clickHandle="pass(scope.row)">通过</PublicButton>
+          <PublicButton :disabled="scope.row.progress >= 3" @clickHandle="pass(scope.row)">通过</PublicButton>
         </template>
       </el-table-column>
     </el-table>
@@ -159,11 +159,21 @@ export default {
     },
     // 通过
     async pass (row) {
-      const res = await this.PUT_TEAM_PROGRESS(row)
-      if (res.result === '0' && res.data) {
-        this.getData()
-      }
-      console.log('通过:', row, res)
+      this.$confirm('是否确认此队伍通过?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(async () => {
+        const res = await this.PUT_TEAM_PROGRESS(row)
+        if (res.result === '0' && res.data) {
+          this.getData()
+        }
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消'
+        })
+      })
     },
     // 获取页面数据
     async getData () {

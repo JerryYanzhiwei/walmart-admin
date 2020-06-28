@@ -33,7 +33,7 @@ export default {
       } else {
         return [
           {
-            path: '/works/list',
+            path: '/works/admin',
             title: '作品列表'
           }
         ]
