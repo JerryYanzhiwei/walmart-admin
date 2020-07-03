@@ -4,7 +4,7 @@
 
 export default [
   {
-    "matchZone": "北区",
+    "matchZone": "华北区",
     "code": "1001",
     "value": "11",
     "labelZh": "北京市",
@@ -102,7 +102,7 @@ export default [
   {
     "value": "12",
     "labelZh": "天津市",
-    "matchZone": "北区",
+    "matchZone": "华北区",
     "code": "1001",
     "children": [
       {
@@ -198,7 +198,7 @@ export default [
   {
     "value": "13",
     "labelZh": "河北省",
-    "matchZone": "北区",
+    "matchZone": "华北区",
     "code": "1001",
     "children": [
       {
@@ -1136,7 +1136,7 @@ export default [
   {
     "value": "14",
     "labelZh": "山西省",
-    "matchZone": "北区",
+    "matchZone": "华北区",
     "code": "1001",
     "children": [
       {
@@ -1817,7 +1817,7 @@ export default [
   {
     "value": "15",
     "labelZh": "内蒙古",
-    "matchZone": "北区",
+    "matchZone": "华北区",
     "code": "1001",
     "children": [
       {
@@ -2425,7 +2425,7 @@ export default [
   {
     "value": "21",
     "labelZh": "辽宁省",
-    "matchZone": "北区",
+    "matchZone": "华北区",
     "code": "1001",
     "children": [
       {
@@ -3032,7 +3032,7 @@ export default [
   {
     "value": "22",
     "labelZh": "吉林省",
-    "matchZone": "北区",
+    "matchZone": "华北区",
     "code": "1001",
     "children": [
       {
@@ -3404,7 +3404,7 @@ export default [
   {
     "value": "23",
     "labelZh": "黑龙江",
-    "matchZone": "北区",
+    "matchZone": "华北区",
     "code": "1001",
     "children": [
       {
@@ -4164,7 +4164,7 @@ export default [
   {
     "value": "31",
     "labelZh": "上海市",
-    "matchZone": "东区",
+    "matchZone": "华东区",
     "code": "1002",
     "children": [
       {
@@ -4260,7 +4260,7 @@ export default [
   {
     "value": "32",
     "labelZh": "江苏省",
-    "matchZone": "东区",
+    "matchZone": "华东区",
     "code": "1002",
     "children": [
       {
@@ -4845,7 +4845,7 @@ export default [
   {
     "value": "33",
     "labelZh": "浙江省",
-    "matchZone": "东区",
+    "matchZone": "华东区",
     "code": "1002",
     "children": [
       {
@@ -5381,7 +5381,7 @@ export default [
   {
     "value": "34",
     "labelZh": "安徽省",
-    "matchZone": "东区",
+    "matchZone": "华东区",
     "code": "1002",
     "children": [
       {
@@ -6027,7 +6027,7 @@ export default [
   {
     "value": "35",
     "labelZh": "福建省",
-    "matchZone": "东区",
+    "matchZone": "华东区",
     "code": "1002",
     "children": [
       {
@@ -6519,7 +6519,7 @@ export default [
   {
     "value": "36",
     "labelZh": "江西省",
-    "matchZone": "东区",
+    "matchZone": "华东区",
     "code": "1002",
     "children": [
       {
@@ -7110,7 +7110,7 @@ export default [
   {
     "value": "37",
     "labelZh": "山东省",
-    "matchZone": "北区",
+    "matchZone": "华北区",
     "code": "1001",
     "children": [
       {
@@ -7923,7 +7923,7 @@ export default [
   {
     "value": "41",
     "labelZh": "河南省",
-    "matchZone": "北区",
+    "matchZone": "华北区",
     "code": "1001",
     "children": [
       {
@@ -8863,7 +8863,7 @@ export default [
   {
     "value": "42",
     "labelZh": "湖北省",
-    "matchZone": "北区",
+    "matchZone": "华北区",
     "code": "1001",
     "children": [
       {
@@ -9485,7 +9485,7 @@ export default [
   {
     "value": "43",
     "labelZh": "湖南省",
-    "matchZone": "南区",
+    "matchZone": "华南区",
     "code": "1003",
     "children": [
       {
@@ -10202,7 +10202,7 @@ export default [
   {
     "value": "44",
     "labelZh": "广东省",
-    "matchZone": "南区",
+    "matchZone": "华南区",
     "code": "1003",
     "children": [
       {
@@ -10973,7 +10973,7 @@ export default [
   {
     "value": "45",
     "labelZh": "广西区",
-    "matchZone": "南区",
+    "matchZone": "华南区",
     "code": "1003",
     "children": [
       {
@@ -11635,7 +11635,7 @@ export default [
   {
     "value": "46",
     "labelZh": "海南省",
-    "matchZone": "南区",
+    "matchZone": "华南区",
     "code": "1003",
     "children": [
       {
@@ -11813,7 +11813,7 @@ export default [
   {
     "value": '200',
     'labelZh': '澳门',
-    "matchZone": "南区",
+    "matchZone": "华南区",
     "code": "1003",
     "children": [
       {
@@ -11825,7 +11825,7 @@ export default [
   {
     "value": '201',
     'labelZh': '香港',
-    "matchZone": "南区",
+    "matchZone": "华南区",
     "code": "1003",
     "children": [
       {
@@ -11837,11 +11837,11 @@ export default [
   {
     "value": '202',
     'labelZh': '台湾',
-    "matchZone": "南区",
+    "matchZone": "华南区",
     "code": "1003",
     "children": [
       {
-        "value": "1000001",
+        "value": "1000003",
         "labelZh": "台湾"
       }
     ]
@@ -11849,11 +11849,11 @@ export default [
   {
     "value": '203',
     'labelZh': '海外',
-    "matchZone": "南区",
+    "matchZone": "华南区",
     "code": "1003",
     "children": [
       {
-        "value": "1000001",
+        "value": "1000004",
         "labelZh": "海外"
       }
     ]
@@ -11861,7 +11861,7 @@ export default [
   {
     "value": "50",
     "labelZh": "重庆市",
-    "matchZone": "西区",
+    "matchZone": "华西区",
     "code": "1004",
     "children": [
       {
@@ -12074,7 +12074,7 @@ export default [
   {
     "value": "51",
     "labelZh": "四川省",
-    "matchZone": "西区",
+    "matchZone": "华西区",
     "code": "1004",
     "children": [
       {
@@ -13145,7 +13145,7 @@ export default [
   {
     "value": "52",
     "labelZh": "贵州省",
-    "matchZone": "西区",
+    "matchZone": "华西区",
     "code": "1004",
     "children": [
       {
@@ -13657,7 +13657,7 @@ export default [
   {
     "value": "53",
     "labelZh": "云南省",
-    "matchZone": "西区",
+    "matchZone": "华西区",
     "code": "1004",
     "children": [
       {
@@ -14423,7 +14423,7 @@ export default [
   {
     "value": "54",
     "labelZh": "西藏",
-    "matchZone": "西区",
+    "matchZone": "华西区",
     "code": "1004",
     "children": [
       {
@@ -14851,7 +14851,7 @@ export default [
   {
     "value": "61",
     "labelZh": "陕西省",
-    "matchZone": "北区",
+    "matchZone": "华北区",
     "code": "1001",
     "children": [
       {
@@ -15465,7 +15465,7 @@ export default [
   {
     "value": "62",
     "labelZh": "甘肃省",
-    "matchZone": "西区",
+    "matchZone": "华西区",
     "code": "1004",
     "children": [
       {
@@ -16007,7 +16007,7 @@ export default [
   {
     "value": "63",
     "labelZh": "青海省",
-    "matchZone": "西区",
+    "matchZone": "华西区",
     "code": "1004",
     "children": [
       {
@@ -16287,7 +16287,7 @@ export default [
   {
     "value": "64",
     "labelZh": "宁夏",
-    "matchZone": "西区",
+    "matchZone": "华西区",
     "code": "1004",
     "children": [
       {
@@ -16441,7 +16441,7 @@ export default [
   {
     "value": "65",
     "labelZh": "新疆",
-    "matchZone": "西区",
+    "matchZone": "华西区",
     "code": "1004",
     "children": [
       {
