@@ -115,7 +115,7 @@
         label="评审情况">
         <template slot-scope="scope">
           <PublicButton :disabled="scope.row.progress >= 3" @clickHandle="pass(scope.row)">通过</PublicButton>
-          <PublicButton :disabled="scope.row.progress < 1" @clickHandle="backProcess(scope.row)">回退状态</PublicButton>
+          <PublicButton style="marginLeft: 5px" :disabled="scope.row.progress < 1" @clickHandle="backProcess(scope.row)">回退状态</PublicButton>
         </template>
       </el-table-column>
     </el-table>
@@ -220,13 +220,8 @@ export default {
     },
     // 切换赛事类型
     handleClick (e) {
-      this.pageForm = {
-        pageSize: 10,
-        pageNo: 1,
-        teamProgress: e.name,
-        matchZone: '',
-        opusFlag: -1
-      }
+      this.pageForm.pageNo = 1
+      this.pageForm.teamProgress = e.name
       this.activeType = e.name
       this.getData()
     },
@@ -264,7 +259,7 @@ export default {
         type: 'warning'
       }).then(async () => {
         const res = await this.PUT_BACK_PROCESS({
-          teamProgress: row.progress,
+          teamProgress: Number(row.progress) - 1,
           teamId: row.teamId
         })
         if (res.result === '0' && res.data) {
