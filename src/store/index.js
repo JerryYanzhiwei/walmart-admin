@@ -30,7 +30,7 @@ export default new Vuex.Store({
     },
     // 队伍列表
     async GET_TEAM_LIST ({ commit }, data = {}) {
-      const { data: res } = await axios.get(`/admin/team/page?pageNo=${data.pageNo}&pageSize=${data.pageSize}&teamProgress=${data.teamProgress}`)
+      const { data: res } = await axios.get(`/admin/team/page?pageNo=${data.pageNo}&pageSize=${data.pageSize}&teamProgress=${data.teamProgress}&matchZone=${data.matchZone}&opusFlag=${data.opusFlag}&teamName=${data.teamName}`)
       return res
     },
     async PUT_BACK_PROCESS ({ commit }, data = {}) {
