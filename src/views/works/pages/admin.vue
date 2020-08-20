@@ -190,8 +190,8 @@ export default {
     }
   },
   created () {
-    // this.userInfo = JSON.parse(sessionStorage.getItem('adminInfo'))
-    // this.getData()
+    this.userInfo = JSON.parse(sessionStorage.getItem('adminInfo'))
+    this.getData()
   },
   methods: {
     ...mapActions(['PUT_BACK_PROCESS', 'GET_TEAM_LIST', 'GET_ACCOUNT_LIST', 'GET_DOWN_FILE', 'PUT_TEAM_PROGRESS']),
