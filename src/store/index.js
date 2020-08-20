@@ -33,6 +33,10 @@ export default new Vuex.Store({
       const { data: res } = await axios.get(`/admin/team/page?pageNo=${data.pageNo}&pageSize=${data.pageSize}&teamProgress=${data.teamProgress}`)
       return res
     },
+    async PUT_BACK_PROCESS ({ commit }, data = {}) {
+      const { data: res } = await axios.put(`/admin/team/teamProgress?teamId=${data.teamId}&teamProgress=${data.teamProgress}`)
+      return res
+    },
     // 评委修改密码
     async PUT_MOIDIFY_PASSWORD ({ commit }, data = {}) {
       const { data: res } = await axios.put(`/judge/password?password=${data.password}`)

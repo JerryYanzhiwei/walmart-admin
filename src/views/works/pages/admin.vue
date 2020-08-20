@@ -5,6 +5,36 @@
       <el-button @click="downloadAccount" type="primary">下载注册列表<i class="el-icon-download el-icon--right"></i></el-button>
       <el-button @click="downloadTeamList" type="primary">下载队伍列表<i class="el-icon-download el-icon--right"></i></el-button>
     </div>
+    <div class="search_contain">
+      <div>
+        <span>队伍名称</span>
+        <el-input v-model="pageForm.teamName" size="mini"/>
+      </div>
+      <div>
+        <span>提交作品</span>
+        <el-select v-model="pageForm.opusFlag">
+          <el-option
+            v-for="item in isSubmitForm"
+            :key="item.code"
+            :label="item.value"
+            :value="item.code">
+          </el-option>
+        </el-select>
+      </div>
+      <div>
+        <span>赛区</span>
+        <el-select v-model="pageForm.matchZone">
+          <el-option
+            v-for="item in matchArea"
+            :key="item.code"
+            :label="item.value"
+            :value="item.code">
+          </el-option>
+        </el-select>
+      </div>
+      <el-button @click="searchList" type="primary">搜索</el-button>
+      <el-button @click="downloadTeamFile" type="primary">下载队伍文件<i class="el-icon-download el-icon--right"></i></el-button>
+    </div>
     <div class="filter_container">
       <el-tabs v-model="activeType" @tab-click="handleClick">
         <el-tab-pane label="组队中" name="0"></el-tab-pane>
@@ -85,6 +115,7 @@
         label="评审情况">
         <template slot-scope="scope">
           <PublicButton :disabled="scope.row.progress >= 3" @clickHandle="pass(scope.row)">通过</PublicButton>
+          <PublicButton :disabled="scope.row.progress < 1" @clickHandle="backProcess(scope.row)">回退状态</PublicButton>
         </template>
       </el-table-column>
     </el-table>
@@ -112,19 +143,58 @@ export default {
       pageForm: {
         pageSize: 10,
         pageNo: 1,
-        teamProgress: 0
+        teamProgress: 0,
+        matchZone: '',
+        opusFlag: -1,
+        teamName: ''
       },
       pageData: {},
       tableData: [],
-      userInfo: {}
+      userInfo: {},
+      matchArea: [
+        {
+          value: '华北区',
+          code: 1001
+        },
+        {
+          value: '华南区',
+          code: 1003
+        },
+        {
+          value: '华东区',
+          code: 1002
+        },
+        {
+          value: '华西区',
+          code: 1004
+        },
+        {
+          value: '全部',
+          code: ''
+        }
+      ],
+      isSubmitForm: [
+        {
+          value: '否',
+          code: 0
+        },
+        {
+          value: '是',
+          code: 1
+        },
+        {
+          value: '全部',
+          code: -1
+        }
+      ]
     }
   },
   created () {
-    this.userInfo = JSON.parse(sessionStorage.getItem('adminInfo'))
-    this.getData()
+    // this.userInfo = JSON.parse(sessionStorage.getItem('adminInfo'))
+    // this.getData()
   },
   methods: {
-    ...mapActions(['GET_TEAM_LIST', 'GET_ACCOUNT_LIST', 'GET_DOWN_FILE', 'PUT_TEAM_PROGRESS']),
+    ...mapActions(['PUT_BACK_PROCESS', 'GET_TEAM_LIST', 'GET_ACCOUNT_LIST', 'GET_DOWN_FILE', 'PUT_TEAM_PROGRESS']),
     async getFileDown (attachmentId) {
       await this.GET_DOWN_FILE(attachmentId)
     },
@@ -134,9 +204,18 @@ export default {
     async downloadTeamList () {
       window.open(`${BASE_URL}/admin/team/dowload`)
     },
+    async downloadTeamFile () {
+      const params = this.pageForm
+      window.open(`${BASE_URL}/admin/team/dowload/files?matchZone=${params.matchZone}&opusFlag=${params.opusFlag}&teamName=${params.teamName}&teamProgress=${params.teamProgress}`)
+    },
     // 切换分页
     pageChange (data) {
       this.pageForm.pageNo = data
+      this.getData()
+    },
+    // 搜索
+    searchList () {
+      this.pageForm.pageNo = 1
       this.getData()
     },
     // 切换赛事类型
@@ -144,7 +223,9 @@ export default {
       this.pageForm = {
         pageSize: 10,
         pageNo: 1,
-        teamProgress: e.name
+        teamProgress: e.name,
+        matchZone: '',
+        opusFlag: -1
       }
       this.activeType = e.name
       this.getData()
@@ -175,6 +256,27 @@ export default {
         })
       })
     },
+    // 回滚状态
+    backProcess (row) {
+      this.$confirm('是否确认此队伍回退状态?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(async () => {
+        const res = await this.PUT_BACK_PROCESS({
+          teamProgress: row.progress,
+          teamId: row.teamId
+        })
+        if (res.result === '0' && res.data) {
+          this.getData()
+        }
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消'
+        })
+      })
+    },
     // 获取页面数据
     async getData () {
       const params = this.pageForm
@@ -193,10 +295,36 @@ export default {
   .down_list {
     margin-bottom: 20px;
   }
+  .search_contain {
+    display: flex;
+    > div {
+      display: flex;
+      align-items: center;
+      width: 20%;
+    }
+  }
 }
 </style>
 
 <style lang="scss">
+  .search_contain {
+    display: flex;
+    > div {
+      .el-input {
+        width: 70%;
+
+        margin-left: 5px;
+      }
+      .el-select {
+        width: 70%;
+        .el-input {
+          width: 100%;
+
+          margin-left: 5px;
+        }
+      }
+    }
+  }
   .nowrap {
     width: 100%;
     overflow: hidden;
